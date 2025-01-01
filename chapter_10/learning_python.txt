@@ -1,0 +1,13 @@
+In Python you can print a string.
+In Python you can store a string in a variable.
+In Python you can make conditional statements using if.
+In Python you can store a list of items in a data structure called a list.
+In Python you can store a key-value pair in a data structure called a dictionary.
+In Python you can store a series of items in a data structure called a tuple.
+In Python you can loop through a list of items using a for loop.
+In Python you can modularize your code using functions.
+In Python you can import functions from modules.
+In Python you can use object-oriented programming to model real-world objects.
+In Python you can use a class to model a real-world object.
+In Python you can create an instance of a class.
+In Python you can use a variety of in-built methods to manipulate strings.
