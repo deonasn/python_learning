@@ -3,20 +3,13 @@
 
 from pathlib import Path
 
-path = Path("pi_digits.txt")
-contents = path.read_text()
-lines = contents.splitlines()
-pi_string = ''
-for line in lines:
-    pi_string += line.lstrip()
+contents = "I love programming.\n"
+contents += "I love creating new games.\n"
+contents += "I also love working with data.\n"
+contents += str(8)
 
-birthday = input("Enter your birthday, in the form mmddyy: ")
-if birthday in pi_string:
-    print("Your birthday appears in the first million digits of pi!")
-else:
-    print("Your birthday does not appear in the first million digits of pi.")
-
-# print(pi_string)
-# print(len(pi_string))
-# print(f"{pi_string[:52]}...")
-# print(contents)
+path = Path("programming.txt")
+path.write_text(contents)
+print(len(contents))
+# path.write_text("I love programming.")
+# path.write_text("I love creating new games.")
