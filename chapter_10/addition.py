@@ -2,15 +2,13 @@
 # 01-04-2025
 # Python Crash Course: Try it yourself: 10-6
 
+first_number = input('\nEnter first number: ')
+second_number = input('Enter second number: ')
 try:
-    first_number = int(input('\nEnter first number: '))
+    first_number = int(first_number)
+    second_number = int(second_number)
 except ValueError:
     print("Invalid Entry! Please enter an integer.")
 else:
-    try:
-        second_number = int(input('Enter second number: '))
-    except ValueError:
-        print("Invalid Entry! Please enter a number.")
-    else:
-        result = first_number + second_number
-        print(f'\n->  {first_number} + {second_number} = {result}')
+    result = int(first_number + second_number)
+    print(f'\n->  {first_number} + {second_number} = {result}')
