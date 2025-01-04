@@ -1,15 +1,19 @@
 # just for practicing while reading
 # mostly in-text examples
 
-from pathlib import Path
+print("Give me two numbers, and I'll divide them.")
+print("Enter 'q' to quit.")
 
-contents = "I love programming.\n"
-contents += "I love creating new games.\n"
-contents += "I also love working with data.\n"
-contents += str(8)
-
-path = Path("programming.txt")
-path.write_text(contents)
-print(len(contents))
-# path.write_text("I love programming.")
-# path.write_text("I love creating new games.")
+while True:
+    first_number = input("\nFirst Number: ")
+    if first_number == 'q':
+        break
+    second_number = input("Second Number: ")
+    if second_number == 'q':
+        break
+    try:
+        answer = int(first_number) / int(second_number)
+    except ZeroDivisionError:
+        print("You can't divide by zero!")
+    else:
+        print("The result is ", answer)
