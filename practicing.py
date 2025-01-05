@@ -1,19 +1,16 @@
 # just for practicing while reading
 # mostly in-text examples
 
-print("Give me two numbers, and I'll divide them.")
-print("Enter 'q' to quit.")
+from pathlib import Path
+import json
 
-while True:
-    first_number = input("\nFirst Number: ")
-    if first_number == 'q':
-        break
-    second_number = input("Second Number: ")
-    if second_number == 'q':
-        break
-    try:
-        answer = int(first_number) / int(second_number)
-    except ZeroDivisionError:
-        print("You can't divide by zero!")
-    else:
-        print("The result is ", answer)
+# numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+path = Path('numbers.json')
+
+# contents = json.dumps(numbers)
+# path.write_text(contents)
+
+contents = path.read_text()
+numbers = json.loads(contents)
+
+print(numbers)
