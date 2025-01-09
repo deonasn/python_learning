@@ -14,28 +14,24 @@ def entry_new_username(path):
 
 def get_stored_username(path):
     """Extracts the stored username from the given JSON data file."""
-    global empty_file_status
     if path.exists():
         contents = path.read_text()
         try:
             username = json.loads(contents)
         except JSONDecodeError:
-            print("The JSON data file is empty!")
+            print("The JSON data file is empty!\n")
             username = entry_new_username(path)
             print(f"We'll remember you when you come back, {username}!")
-            empty_file_status = True
-            return username
+            return username, True
         else:
-            return username
+            return username, False
     else:
         return None
 
 def greet_user():
     """Greets the user."""
-    global empty_file_status
     path = Path('username.json')
-    empty_file_status = False
-    username = get_stored_username(path)
+    username, empty_file_status = get_stored_username(path)
     if username:
         if empty_file_status:
             pass
