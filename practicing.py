@@ -26,7 +26,7 @@ def get_stored_username(path):
         else:
             return username, False
     else:
-        return None
+        return None, None
 
 def greet_user():
     """Greets the user."""
