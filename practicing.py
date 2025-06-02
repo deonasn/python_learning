@@ -24,18 +24,26 @@ class AnonymousSurvey:
 
     def show_results(self):
         """Show all the responses that have been given."""
-        print("\t\tSurvey results:")
+        result = "\t\tSurvey results:\n"
         for response in self.responses:
-            print(f"\t\t\t- {response}")
-        print("\n")
+            result += f"\t\t\t- {response}\n"
+        result += "\n"
+        return result
+        # print("\t\tSurvey results:")
+        # for response in self.responses:
+        #     print(f"\t\t\t- {response}")
+        # print("\n")
 
 
-question = "What language did you first learn to speak?"
-language_survey = AnonymousSurvey(question)
-language_survey.show_question()
-while True:
-    response = input("Language: ")
-    if response.lower() == 'q':
-        break
-    language_survey.store_response(response)
-language_survey.show_results()
+if __name__ == "__main__":
+    """main function takes user input and stores responses to take the survey."""
+    question = "What language did you first learn to speak?"
+    language_survey = AnonymousSurvey(question)
+    language_survey.show_question()
+    while True:
+        response = input("Language: ")
+        if response.lower() == 'q':
+            break
+        language_survey.store_response(response)
+    survey_result = language_survey.show_results()
+    print(survey_result)
