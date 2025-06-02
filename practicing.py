@@ -24,15 +24,12 @@ class AnonymousSurvey:
 
     def show_results(self):
         """Show all the responses that have been given."""
-        result = "\t\tSurvey results:\n"
+        print("\t\tSurvey results:")
+        result = ''
         for response in self.responses:
             result += f"\t\t\t- {response}\n"
         result += "\n"
         return result
-        # print("\t\tSurvey results:")
-        # for response in self.responses:
-        #     print(f"\t\t\t- {response}")
-        # print("\n")
 
 
 if __name__ == "__main__":
