@@ -4,7 +4,7 @@
 
 from practicing import AnonymousSurvey
 
-def test_store_single_response():
+def test_store_print_multiple_response():
     """Test that a single response is stored correctly."""
     question = "What language did you first learn to speak?"
     language_survey = AnonymousSurvey(question)
