@@ -1,46 +1,36 @@
 # just for practicing while reading
 # mostly in-text examples
-# chapter 11: survey example
+# chapter 12: alien invasion example
 
-class AnonymousSurvey:
-    """Collect anonymous answers to a survey question."""
+import sys
+import pygame
 
-    def __init__(self, question):
-        """Store a question and prepare to store responses."""
-        self.question = question
-        self.responses = []
+class AlienInvasion:
+    """Overall class to manage game assets and behavior."""
+    
+    def __init__(self):
+        """Initialize the game, and create game resources."""
+        pygame.init()
+        
+        self.clock = pygame.time.Clock()
+        self.screen = pygame.display.set_mode((1200, 800))
+        pygame.display.set_caption("Alien Invasion")
 
-    def show_question(self):
-        """Show the survey question."""
-        print(self.question)
+    def run_game(self):
+        """Start the main loop for the game."""
+        while True:
+            # Watch for keyboard and mouse events.
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
 
-    def store_response(self, new_response):
-        """Store a single response to the survey."""
-        new_response = new_response.title()
-        if new_response in self.responses:
-            print("\t->This response has already been recorded.")
-        else:
-            self.responses.append(new_response)
-
-    def show_results(self):
-        """Show all the responses that have been given."""
-        print("\t\tSurvey results:")
-        result = ''
-        for response in self.responses:
-            result += f"\t\t\t- {response}\n"
-        result += "\n"
-        return result
+            # Make the most recently drawn screen visible.
+            pygame.display.flip()
+            # Limit the frame rate to 60 FPS
+            self.clock.tick(60)
 
 
-if __name__ == "__main__":
-    """main function takes user input and stores responses to take the survey."""
-    question = "What language did you first learn to speak?"
-    language_survey = AnonymousSurvey(question)
-    language_survey.show_question()
-    while True:
-        response = input("Language: ")
-        if response.lower() == 'q':
-            break
-        language_survey.store_response(response)
-    survey_result = language_survey.show_results()
-    print(survey_result)
+if __name__ == '__main__':
+    # Make a game instance, and run the game.
+    ai = AlienInvasion()
+    ai.run_game()
