@@ -1,0 +1,18 @@
+Notes made on making the game 'Alien Invasion'
+
+Terms:
+1. Game elements: Specific objects in the game, like an alien or a ship.
+1. Surface: A part of the screen where a game element can be displayed. Each element in the game is its own surface.
+2. Event: An action that the user performs while playing the game, such as pressing a key or moving the mouse.
+3. Event loop: A loop written to listen for events and perform appropriate tasks depending on the kinds of events that occur.
+
+
+Code/Methods:
+1. pygame.init() -> initializes the background settings that Pygame needs to work properly.
+2. pygame.display.set_mode((<pixels by width>, <pixels by height>)) -> creates a display window on which we draw all the game's graphical elements, while defining the dimensions of the game window in pixels width by height.
+3. pygame.display.set_caption("<Title>") -> sets the title of the display window.
+4. pygame.event.get() -> returns a list of events that have taken place since the last time it was called - to access the events that Pygame detects.
+5. pygame.QUIT -> event where the player clicks the game window's close button.
+6. pygame.display.flip() -> tells pygame to make the most recently drawn screen visible.
+7. pygame.time.Clock() -> creates an instance of 'Clock' class from the 'pygame.time' module. The object keeps track of how much time has passed between each frame. Also measures time and helps manage the speed of the game.
+8. self.clock.tick(<integer for the fps>) -> the tick() method controls how many times the loop runs per second.
