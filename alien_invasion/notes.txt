@@ -1,10 +1,15 @@
 Notes made on making the game 'Alien Invasion'
 
+In Python, 'self' is a reference to the current instance of the class. It is used inside class methods to access the instance’s attributes and other methods. When you write 'self.attribute' or 'self.method()', you are referring to the data and functions that belong to that specific object.
+'self' is given as the first parameter in every instance method of a class, but do not have to include while calling the method.
+
 Terms:
-1. Game elements: Specific objects in the game, like an alien or a ship.
-1. Surface: A part of the screen where a game element can be displayed. Each element in the game is its own surface.
-2. Event: An action that the user performs while playing the game, such as pressing a key or moving the mouse.
-3. Event loop: A loop written to listen for events and perform appropriate tasks depending on the kinds of events that occur.
+1. Object: It is a collection of data (attributes) and functions (methods) that are bundled together. They are created from classes, which are like blueprints for what the object should be and do.
+2. Game elements: Specific objects in the game, like an alien or a ship.
+3. Surface: A part of the screen where a game element can be displayed. Each element in the game is its own surface.
+4. Event: An action that the user performs while playing the game, such as pressing a key or moving the mouse.
+5. Event loop: A loop written to listen for events and perform appropriate tasks depending on the kinds of events that occur.
+6. Rect object: A special object that represents a rectangle. It store information about the rectangle's position (x and y coordinates) and its size (width and height).
 
 
 Code/Methods:
@@ -16,3 +21,15 @@ Code/Methods:
 6. pygame.display.flip() -> tells pygame to make the most recently drawn screen visible.
 7. pygame.time.Clock() -> creates an instance of 'Clock' class from the 'pygame.time' module. The object keeps track of how much time has passed between each frame. Also measures time and helps manage the speed of the game.
 8. self.clock.tick(<integer for the fps>) -> the tick() method controls how many times the loop runs per second.
+9. self.get_rect() -> used to obtain a Rect object that represents the size (width and height) and position (x and y coordinates) of a surface (screen or image). This Rect makes it easy to position, move, and align objects.
+10. pygame.image.load('<image address>') -> used to load an image. It returns a surface representing the image.
+11. self.rect -> Rectangle that defines the position and size of the image.
+12. self.rect.<position> -> is not a new variable, its a built in attribute of the Pygame Rect object.
+13. self.rect.<position> = self.screen.get_rect().<position> -> assigns the position and coordinates of midbottom of the screen to the midbottom of the image.
+14. self.screen.blit(<image>, <rect>) -> draws the image onto the screen at the position specified by rect.
+
+
+Pygame Screen Positions:
+1. Centering -> center, centerx, centery
+2. Edge -> top, bottom, left, right
+3. Edge-Centering -> midbottom, midtop, midleft, midright, topleft, topright, bottomleft, bottomright.
