@@ -64,10 +64,6 @@ class Ship:
         self.screen_rect = self.screen.get_rect()
 
         # Load the ship image and get its rect.
-        # ship_image = "alien_invasion/images/3B.bmp"
-        # ship_image = "alien_invasion/images/battlecruiser.bmp"
-        # ship_image = "alien_invasion/images/bomber.bmp"
-        # ship_image = "alien_invasion/images/scout.bmp"
         ship_image = "alien_invasion/images/ship.bmp"
         self.image = pygame.image.load(ship_image)
         self.rect = self.image.get_rect()
