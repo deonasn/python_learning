@@ -2,6 +2,7 @@ Notes made on making the game 'Alien Invasion'
 
 In Python, 'self' is a reference to the current instance of the class. It is used inside class methods to access the instance’s attributes and other methods. When you write 'self.attribute' or 'self.method()', you are referring to the data and functions that belong to that specific object.
 'self' is given as the first parameter in every instance method of a class, but do not have to include while calling the method.
+* You start out writing your code as simply as possible, and then refactor it as your project beomes more complex.
 
 Terms:
 1. Object: It is a collection of data (attributes) and functions (methods) that are bundled together. They are created from classes, which are like blueprints for what the object should be and do.
@@ -10,6 +11,7 @@ Terms:
 4. Event: An action that the user performs while playing the game, such as pressing a key or moving the mouse.
 5. Event loop: A loop written to listen for events and perform appropriate tasks depending on the kinds of events that occur.
 6. Rect object: A special object that represents a rectangle. It store information about the rectangle's position (x and y coordinates) and its size (width and height).
+7. Helper method: A function defined inside a class that performs a specific, often small or repetitive tast to support other methods in the class. They work inside a cleass but isn't meant to be used by code outside the class. In Python, a single leading underscore indicaes a helper method.
 
 
 Code/Methods:
