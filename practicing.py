@@ -34,6 +34,12 @@ class AlienInvasion:
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
+                elif event.type == pygame.KEYDOWN:
+                    # Move the ship to the right or left.
+                    if event.key == pygame.K_RIGHT:
+                        self.ship.rect.x += 1
+                    elif event.key == pygame.K_LEFT:
+                        self.ship.rect.x -= 1
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
@@ -63,12 +69,14 @@ class Ship:
         self.screen = ai_game.screen
         self.screen_rect = self.screen.get_rect()
 
-        # Load the ship image and get its rect.
+        # Load the ship image.
         ship_image = "alien_invasion/images/ship.bmp"
         self.image = pygame.image.load(ship_image)
+        # Create a rect object for the ship (default position (0, 0)).
         self.rect = self.image.get_rect()
-
-        # Start each new ship at the bottom center of the screen.
+        #You use the image (self.image) for drawing, but you do not rely on its original size and position after creating the rect. Instead, you use the Rect (self.rect) to control the position (and, if needed, the size) of where the image appears on the screen. The image’s pixel data stays the same, but its location on the screen is determined by the current values in self.rect.
+        
+        # Set the start position of the ship to midbottom of the screen.
         self.rect.midbottom = self.screen.get_rect().midbottom
     
     def blitme(self):
