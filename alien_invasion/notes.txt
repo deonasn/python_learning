@@ -31,6 +31,18 @@ Code/Methods:
 14. self.screen.blit(<image>, <rect>) -> draws the image onto the screen at the position specified by rect.
 
 
+Drawing Ship to the Screen:
+Load the image:
+self.image = pygame.image.load('images/ship.bmp')
+This loads the ship image into self.image.
+Create a rect object:
+self.rect = self.image.get_rect()
+This creates a Rect object for the image, giving you access to its size and position.
+Set the position:
+self.rect.midbottom = self.screen.get_rect().midbottom
+This moves the ship’s rect so its midbottom aligns with the screen’s midbottom, placing the ship at the bottom center of the window.
+
+
 Pygame Screen Positions:
 1. Centering -> center, centerx, centery
 2. Edge -> top, bottom, left, right
