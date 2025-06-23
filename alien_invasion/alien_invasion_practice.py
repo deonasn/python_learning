@@ -42,13 +42,30 @@ class AlienInvasion:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         sys.exit()
+                    elif event.key == pygame.K_a:
+                        self.ship.auto_run = True
+                        self.ship.auto_run_direction = 'left'
+                    elif event.key == pygame.K_d:
+                        self.ship.auto_run = True
+                        self.ship.auto_run_direction = 'right'
+                    elif event.key == pygame.K_s:
+                        self.ship.auto_run = False
+                        self.ship.moving_left = False
+                        self.ship.moving_right = False
 
     def _check_keyspressed(self):
         """Check which keys are pressed and update ship movement."""
         keys = pygame.key.get_pressed()
-        self.ship.moving_right = keys[pygame.K_RIGHT]
-        self.ship.moving_left = keys[pygame.K_LEFT]
-
+        if keys[pygame.K_LEFT]:
+            self.ship.auto_run = False
+            self.ship.moving_left = True
+        elif keys[pygame.K_RIGHT]:
+            self.ship.auto_run = False
+            self.ship.moving_right = True
+        else:
+            # If neither arrow key is held, stop movement (but don't affect A/D auto-run)
+            self.ship.moving_left = False
+            self.ship.moving_right = False
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
@@ -95,9 +112,12 @@ class Ship:
         # Store a float for the ship's exact horizontal position.
         self.x = float(self.rect.x)
 
-        # Movement flag; start with a ship that's not moving.
+        # Initializing Movement flags; start with a ship that's not moving.
         self.moving_right = False
         self.moving_left = False
+        # Initializing Auto-run flags; these will be used for auto-running left or right.
+        self.auto_run = False
+        self.auto_run_direction = None  # Default direction for auto-run
 
     def update(self):
         """Update the ship's position based on the movement flags."""
@@ -106,6 +126,13 @@ class Ship:
             self.x += self.settings.ship_speed
         if self.moving_left and self.rect.left > 0:
             self.x -= self.settings.ship_speed
+
+        # Handle auto-run if enabled
+        if self.auto_run:
+            if self.auto_run_direction == 'left' and self.rect.left > 0:
+                self.x -= self.settings.ship_speed
+            elif self.auto_run_direction == 'right' and self.rect.right < self.screen_rect.right:
+                self.x += self.settings.ship_speed
 
         # Update the rect object from self.x.
         self.rect.x = self.x
