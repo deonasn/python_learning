@@ -28,7 +28,7 @@ Code/Methods:
 11. self.rect -> Rectangle that defines the position and size of the image.
 12. self.rect.<position> -> is not a new variable, its a built in attribute of the Pygame Rect object.
 13. self.rect.<position> = self.screen.get_rect().<position> -> assigns the position and coordinates of midbottom of the screen to the midbottom of the image.
-14. self.screen.blit(<image>, <rect>) -> draws the image onto the screen at the position specified by rect.
+14. self.screen.blit(<image>, <rect>) -> draws the image onto the screen at the position specified by and with rect.
 
 
 Drawing Ship to the Screen:
@@ -47,3 +47,18 @@ Pygame Screen Positions:
 1. Centering -> center, centerx, centery
 2. Edge -> top, bottom, left, right
 3. Edge-Centering -> midbottom, midtop, midleft, midright, topleft, topright, bottomleft, bottomright.
+
+
+A rect in Pygame is mainly used to position (and move) the image on the screen. It defines where the image will appear and makes it easy to align, move, and detect collisions between game objects.
+
+There are important reasons why the rect takes the size of the image:
+Accurate Positioning:
+    The rect needs to match the image’s size so you can position the image precisely on the screen. If the rect didn’t match, the image might not appear where you expect.
+Collision Detection:
+    Rects are often used for collision detection. If the rect matches the image’s size, you can accurately check if two images (sprites) overlap.
+Convenience:
+    Many Pygame functions and methods expect a rect that matches the image’s size for things like alignment, movement, and drawing.
+Even though changing the rect’s size doesn’t scale the image, having the rect match the image’s size by default makes it much easier to manage and interact with game objects. If you do want to change the image’s size, you can scale the image and then get a new rect for the new size.
+
+
+'Blit' means to copy the pixels from one surface (like an image or sprite) onto another surface (usually the screen) at a specific position. The blit() method is used to draw images or other surfaces onto the display window.
