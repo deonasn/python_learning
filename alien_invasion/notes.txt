@@ -62,3 +62,14 @@ Even though changing the rect’s size doesn’t scale the image, having the rec
 
 
 'Blit' means to copy the pixels from one surface (like an image or sprite) onto another surface (usually the screen) at a specific position. The blit() method is used to draw images or other surfaces onto the display window.
+
+
+pygame.event.get() vs. pygame.key.get_pressed():
+    1. pygame.event.get() is best for handling discrete events like key presses/releases, mouse clicks, or quitting the game. It gives you a list of all events that have occurred since the last call, and you can check the type of each event (e.g., KEYDOWN, KEYUP, QUIT).
+    2. pygame.key.get_pressed() is best for checking the current state of all keyboard keys (whether each key is currently being held down). It returns a list of boolean values for every key.
+Which to use?
+    Use pygame.event.get() if you want to respond to specific events (like a key being pressed or released once).
+    Use pygame.key.get_pressed() if you want to check if a key is being held down (for continuous movement, for example).
+Often, games use both together:
+    pygame.event.get() for quitting, starting, or stopping actions.
+    pygame.key.get_pressed() for smooth, continuous movement.
