@@ -1,7 +1,7 @@
 # Deon Anoth
 # 06-18-2025
-# Python Crash Course: Try it yourself: 12-1 Alien Invasion
-# settings.py for alien_invasion.py
+# Python Crash Course: Try it yourself: Chapter 12
+# settings.py for Chapter 12
 
 class Settings:
     """A class to store all settings for Alien Invasion."""
