@@ -55,8 +55,13 @@ class AlienInvasion:
 
     def _check_keyspressed(self):
         """Check which keys are pressed and update ship movement."""
+        """Auto run is set to False if a key is pressed."""
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.K_LEFT] and keys[pygame.K_RIGHT]:
+            # If both left and right keys are pressed, stop movement
+            self.ship.moving_left = False
+            self.ship.moving_right = False
+        elif keys[pygame.K_LEFT]:
             self.ship.auto_run = False
             self.ship.moving_left = True
         elif keys[pygame.K_RIGHT]:
