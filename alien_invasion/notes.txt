@@ -7,11 +7,12 @@ In Python, 'self' is a reference to the current instance of the class. It is use
 Terms:
 1. Object: It is a collection of data (attributes) and functions (methods) that are bundled together. They are created from classes, which are like blueprints for what the object should be and do.
 2. Game elements: Specific objects in the game, like an alien or a ship.
-3. Surface: A part of the screen where a game element can be displayed. Each element in the game is its own surface.
-4. Event: An action that the user performs while playing the game, such as pressing a key or moving the mouse.
-5. Event loop: A loop written to listen for events and perform appropriate tasks depending on the kinds of events that occur.
-6. Rect object: A special object that represents a rectangle. It store information about the rectangle's position (x and y coordinates) and its size (width and height).
-7. Helper method: A function defined inside a class that performs a specific, often small or repetitive tast to support other methods in the class. They work inside a cleass but isn't meant to be used by code outside the class. In Python, a single leading underscore indicaes a helper method.
+3. Screen: The main display surface; the window or area where all your game graphics are drawn and shown to the player.
+4. Surface: A part of the screen where a game element can be displayed. Each element in the game is its own surface.
+5. Event: An action that the user performs while playing the game, such as pressing a key or moving the mouse.
+6. Event loop: A loop written to listen for events and perform appropriate tasks depending on the kinds of events that occur.
+7. Rect object: A special object that represents a rectangle. It store information about the rectangle's position (x and y coordinates) and its size (width and height).
+8. Helper method: A function defined inside a class that performs a specific, often small or repetitive tast to support other methods in the class. They work inside a cleass but isn't meant to be used by code outside the class. In Python, a single leading underscore indicaes a helper method.
 
 
 Code/Methods:
@@ -73,3 +74,6 @@ Which to use?
 Often, games use both together:
     pygame.event.get() for quitting, starting, or stopping actions.
     pygame.key.get_pressed() for smooth, continuous movement.
+
+
+* You can make the ship go 'Auto-run' by making use of movement flag -> turning it True and False within the event.get().
