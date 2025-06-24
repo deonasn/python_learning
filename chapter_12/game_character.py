@@ -58,7 +58,7 @@ class Character:
         self.screen_rect = self.screen.get_rect()
 
         # Load the character image and get its rect.
-        character_image = "./images/character.bmp"
+        character_image = "chapter_12/images/character.bmp"
         self.image = pygame.image.load(character_image)
         self.rect = self.image.get_rect()
 
