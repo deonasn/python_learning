@@ -4,22 +4,18 @@
 
 import sys
 import pygame
-from settings import Settings
-from ship import Ship
 
-class AlienInvasion:
+class BlueSky:
 
     def __init__(self):
         """Initialize the game, and create game resources."""
         pygame.init()
         self.clock = pygame.time.Clock()
-        self.settings = Settings()
 
-        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
-        pygame.display.set_caption("Alien Invasion")
+        self.screen = pygame.display.set_mode((1280, 720))  # Set the screen size to 1280x720
+        pygame.display.set_caption("Blue Sky")
 
-        # Create an instance of Ship
-        self.ship = Ship(self)
+        self.bg_color = (135, 206, 235)  # Set the background color to sky blue
 
     def run_game(self):
         """Start the main loop for the game."""
@@ -39,14 +35,12 @@ class AlienInvasion:
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
         # Redraw the screen during each pass through the loop.
-        self.screen.fill(self.settings.bg_color)
-        self.ship.blitme()
+        self.screen.fill(self.bg_color)
         # Make the most recently drawn screen visible.
         pygame.display.flip()
 
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
-    ai = AlienInvasion()
-    ai.run_game()
-        
+    bs = BlueSky()
+    bs.run_game()
