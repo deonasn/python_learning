@@ -126,6 +126,8 @@ class Ship:
     def update(self):
         """Update the ship's position based on the movement flags."""
         # Update the ship's x value, not the rect.
+        # For left/right movement, using two if statements allows both to run (and cancel out).
+        # For left/right/auto-run, using if/elif/elif ensures only one movement per frame, which is clearer and avoids bugs.
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
         elif self.moving_left and self.rect.left > 0:
