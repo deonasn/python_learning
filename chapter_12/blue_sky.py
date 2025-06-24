@@ -4,6 +4,8 @@
 
 import sys
 import pygame
+from settings import Settings
+
 
 class BlueSky:
     """A class to manage the game resources and behavior for a simple blue sky game."""
@@ -12,8 +14,9 @@ class BlueSky:
         """Initialize the game, and create game resources."""
         pygame.init()
         self.clock = pygame.time.Clock()
+        self.settings = Settings()
 
-        self.screen = pygame.display.set_mode((1280, 720))  # Set the screen size to 1280x720
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Blue Sky")
 
         self.bg_color = (135, 206, 235)  # Set the background color to sky blue
