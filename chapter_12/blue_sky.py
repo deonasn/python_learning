@@ -6,7 +6,8 @@ import sys
 import pygame
 
 class BlueSky:
-
+    """A class to manage the game resources and behavior for a simple blue sky game."""
+    
     def __init__(self):
         """Initialize the game, and create game resources."""
         pygame.init()
