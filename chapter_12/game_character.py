@@ -17,7 +17,7 @@ class GameCharacter:
         self.settings = Settings()
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
-        pygame.display.set_caption("Blue Sky")
+        pygame.display.set_caption("Character Game")
 
         self.character = Character(self)
 
