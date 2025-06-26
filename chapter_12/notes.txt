@@ -77,3 +77,34 @@ Often, games use both together:
 
 
 * You can make the ship go 'Auto-run' by making use of movement flag -> turning it True and False within the event.get().
+
+
+For smooth diagonal movements:
+    # Vertical movement
+        if keys[pygame.K_UP] and not keys[pygame.K_DOWN]:
+            self.rocket.moving_up = True
+            self.rocket.moving_down = False
+        elif keys[pygame.K_DOWN] and not keys[pygame.K_UP]:
+            self.rocket.moving_down = True
+            self.rocket.moving_up = False
+        else:
+            self.rocket.moving_up = False
+            self.rocket.moving_down = False
+
+        # Horizontal movement
+        if keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
+            self.rocket.moving_left = True
+            self.rocket.moving_right = False
+        elif keys[pygame.K_RIGHT] and not keys[pygame.K_LEFT]:
+            self.rocket.moving_right = True
+            self.rocket.moving_left = False
+        else:
+            self.rocket.moving_left = False
+            self.rocket.moving_right = False
+
+If keys up is pressed and down is not pressed during the same time, the character will move up and will not move down.
+If keys down is pressed and up is not pressed during the same time, the character will move down and will not move up.
+If keys right is pressed and left is not pressed during the same time, the character will move right and will not move left.
+If keys left is pressed and right is not pressed during the same time, the character will move left and will not move right.
+    ^ logic states that the opposite directions are cancelled out, but not the adjacent.
+    Due to how the logic is written, the character can move in diagonals.
