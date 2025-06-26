@@ -150,4 +150,6 @@ class Ship:
 if __name__ == '__main__':
     # Make a game instance, and run the game.
     ai = AlienInvasion()
+    print(pygame.display.Info())  # Print display info for debugging
+    print(f"\t-> Screen size: {ai.settings.screen_width}x{ai.settings.screen_height}")
     ai.run_game()
