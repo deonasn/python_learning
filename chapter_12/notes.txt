@@ -32,6 +32,7 @@ Code/Methods:
 12. self.rect.<position> -> is not a new variable, its a built in attribute of the Pygame Rect object.
 13. self.rect.<position> = self.screen.get_rect().<position> -> assigns the position and coordinates of midbottom of the screen to the midbottom of the image.
 14. self.screen.blit(<image>, <rect>) -> draws the image onto the screen at the position specified by and with rect.
+15. pygame.sprite.Group -> Used to efficiently manage, update, and draw multiple instances of the same type of object (such as bullets, aliens, or enemies). When you have more than one of a particular object, grouping them allows you to handle all of them together—updating their positions, drawing them to the screen, and checking for collisions—using built-in methods, rather than managing each object individually.
 
 
 Drawing Ship to the Screen:
