@@ -9,10 +9,12 @@ Terms:
 2. Game elements: Specific objects in the game, like an alien or a ship.
 3. Screen: The main display surface; the window or area where all your game graphics are drawn and shown to the player.
 4. Surface: A part of the screen where a game element can be displayed. Each element in the game is its own surface.
-5. Event: An action that the user performs while playing the game, such as pressing a key or moving the mouse.
-6. Event loop: A loop written to listen for events and perform appropriate tasks depending on the kinds of events that occur.
-7. Rect object: A special object that represents a rectangle. It store information about the rectangle's position (x and y coordinates) and its size (width and height).
-8. Helper method: A function defined inside a class that performs a specific, often small or repetitive tast to support other methods in the class. They work inside a cleass but isn't meant to be used by code outside the class. In Python, a single leading underscore indicaes a helper method.
+5. Load: Reads an image file from disk and creates a Surface object in memory. The original file is not changed; you work with the Surface in your code. The image is copied.
+6. Draw: Copying a surface's pixels onto another surface (usually the screen). It is not loading from disk.
+7. Event: An action that the user performs while playing the game, such as pressing a key or moving the mouse.
+8. Event loop: A loop written to listen for events and perform appropriate tasks depending on the kinds of events that occur.
+9. Rect object: A special object that represents a rectangle. It store information about the rectangle's position (x and y coordinates) and its size (width and height).
+10. Helper method: A function defined inside a class that performs a specific, often small or repetitive tast to support other methods in the class. They work inside a cleass but isn't meant to be used by code outside the class. In Python, a single leading underscore indicaes a helper method.
 
 
 Code/Methods:
