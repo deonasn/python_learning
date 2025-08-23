@@ -47,7 +47,7 @@ class AlienInvasion:
                     if event.key == pygame.K_ESCAPE:
                         sys.exit()
                     # elif event.key == pygame.K_SPACE:
-                    #     self.fire_bullet()
+                    #     self._fire_bullet()
                     elif event.key == pygame.K_a:
                         self.ship.auto_run = True
                         self.ship.auto_run_direction = 'left'
@@ -80,9 +80,9 @@ class AlienInvasion:
         
         if keys[pygame.K_SPACE]:
             # Fires bullet continuously if space is held down
-            self.fire_bullet()
+            self._fire_bullet()
 
-    def fire_bullet(self):
+    def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
         new_bullet = Bullet(self)
         self.bullets.add(new_bullet)
