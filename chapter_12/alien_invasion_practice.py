@@ -4,6 +4,7 @@
 
 import sys
 import pygame
+from pygame.sprite import Sprite
 
 
 class AlienInvasion:
@@ -21,6 +22,7 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion")
 
         self.ship = Ship(self)
+        self.bullets = pygame.sprite.Group()
 
     def run_game(self):
         """Start the main loop for the game."""
@@ -28,9 +30,12 @@ class AlienInvasion:
             self._check_events()
             self._check_keyspressed()
             self.ship.update()
+            self.bullets.update()
             self._update_screen()
             # Limit the frame rate to 60 FPS
             self.clock.tick(60)
+            # Prints the number of bullets on screen for debugging
+            print(f"Bullets on screen: {len(self.bullets)}", end='\r')
 
     def _check_events(self):
         """Respond to keypreses and mouse events."""
@@ -41,6 +46,8 @@ class AlienInvasion:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         sys.exit()
+                    # elif event.key == pygame.K_SPACE:
+                    #     self.fire_bullet()
                     elif event.key == pygame.K_a:
                         self.ship.auto_run = True
                         self.ship.auto_run_direction = 'left'
@@ -70,11 +77,22 @@ class AlienInvasion:
             # If neither arrow key is held, stop movement (but don't affect A/D auto-run)
             self.ship.moving_left = False
             self.ship.moving_right = False
+        
+        if keys[pygame.K_SPACE]:
+            # Fires bullet continuously if space is held down
+            self.fire_bullet()
+
+    def fire_bullet(self):
+        """Create a new bullet and add it to the bullets group."""
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
         # Redraw the screen during each pass through the loop.
         self.screen.fill(self.settings.bg_color)
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
         self.ship.blitme()
 
         # Make the most recently drawn screen visible.
@@ -92,6 +110,12 @@ class Settings:
 
         # Ship settings
         self.ship_speed = 10.0
+
+        # Bullet settings
+        self.bullet_speed = 20.0
+        self.bullet_width = 3
+        self.bullet_height = 3
+        self.bullet_color = (60, 60, 60)
 
 
 class Ship:
@@ -145,6 +169,34 @@ class Ship:
     def blitme(self):
         """Draw the ship at its current location."""
         self.screen.blit(self.image, self.rect)
+
+class Bullet(Sprite):
+    """A class to manage bullets frired from the ship."""
+
+    def __init__(self, ai_game):
+        """Create a bullet object at the ship's current position."""
+        super().__init__()
+        self.screen = ai_game.screen
+        self.settings = ai_game.settings
+        self.color = self.settings.bullet_color
+
+        # Create a bullet rect at (0,0) and then set correct position.
+        self.rect = pygame.Rect(0, 0, self.settings.bullet_width, self.settings.bullet_height)
+        self.rect.midtop = ai_game.ship.rect.midtop
+
+        # Store the bullet's position as a float.
+        self.y = float(self.rect.y)
+
+    def update(self):
+        """Move the bullet up the screen."""
+        # Update the exact position of the bullet.
+        self.y -= self.settings.bullet_speed
+        # Update the rect position.
+        self.rect.y = self.y
+
+    def draw_bullet(self):
+        """Draw the bullet to the screen."""
+        pygame.draw.rect(self.screen, self.color, self.rect)
 
 
 if __name__ == '__main__':
