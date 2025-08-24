@@ -30,17 +30,11 @@ class AlienInvasion:
             self._check_events()
             self._check_keyspressed()
             self.ship.update()
-            self.bullets.update()
 
-            # Get rid of bullets that have disappeared.
-            # Use .copy() so we can safely remove bullets from the original group while iterating.
-            # If we looped directly over self.bullets, removing items would change the group size and break the loop.
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
             # Prints the number of bullets on screen for debugging
             print(f"Bullets on screen: {len(self.bullets)}", end='\r')
 
+            self._update_bullets()
             self._update_screen()
             # Limit the frame rate to 60 FPS
             self.clock.tick(60)
@@ -92,8 +86,21 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+
+    def _update_bullets(self):
+        """Update position of bullets and get rid of old bullets."""
+        # Update bullet poistions.
+        self.bullets.update()
+        # Get rid of bullets that have disappeared.
+        # Use .copy() so we can safely remove bullets from the original group while iterating.
+        # If we looped directly over self.bullets, removing items would change the group size and break the loop.
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+        
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
@@ -126,6 +133,7 @@ class Settings:
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (60, 60, 60)
+        self.bullets_allowed = 3
 
 
 class Ship:
