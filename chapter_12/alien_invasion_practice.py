@@ -31,11 +31,19 @@ class AlienInvasion:
             self._check_keyspressed()
             self.ship.update()
             self.bullets.update()
+
+            # Get rid of bullets that have disappeared.
+            # Use .copy() so we can safely remove bullets from the original group while iterating.
+            # If we looped directly over self.bullets, removing items would change the group size and break the loop.
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+            # Prints the number of bullets on screen for debugging
+            print(f"Bullets on screen: {len(self.bullets)}", end='\r')
+
             self._update_screen()
             # Limit the frame rate to 60 FPS
             self.clock.tick(60)
-            # Prints the number of bullets on screen for debugging
-            print(f"Bullets on screen: {len(self.bullets)}", end='\r')
 
     def _check_events(self):
         """Respond to keypreses and mouse events."""
@@ -46,8 +54,8 @@ class AlienInvasion:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         sys.exit()
-                    # elif event.key == pygame.K_SPACE:
-                    #     self._fire_bullet()
+                    elif event.key == pygame.K_SPACE:
+                        self._fire_bullet()
                     elif event.key == pygame.K_a:
                         self.ship.auto_run = True
                         self.ship.auto_run_direction = 'left'
@@ -78,9 +86,9 @@ class AlienInvasion:
             self.ship.moving_left = False
             self.ship.moving_right = False
         
-        if keys[pygame.K_SPACE]:
-            # Fires bullet continuously if space is held down
-            self._fire_bullet()
+        # if keys[pygame.K_SPACE]:
+        #     # Fires bullet continuously if space is held down
+        #     self._fire_bullet()
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
@@ -91,8 +99,10 @@ class AlienInvasion:
         """Update images on the screen, and flip to the new screen."""
         # Redraw the screen during each pass through the loop.
         self.screen.fill(self.settings.bg_color)
+        # Redraw all bullets shot from the ship during each pass through the loop.
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
+        # Redraw the ship during each pass through the loop.
         self.ship.blitme()
 
         # Make the most recently drawn screen visible.
@@ -114,7 +124,7 @@ class Settings:
         # Bullet settings
         self.bullet_speed = 20.0
         self.bullet_width = 3
-        self.bullet_height = 3
+        self.bullet_height = 15
         self.bullet_color = (60, 60, 60)
 
 
