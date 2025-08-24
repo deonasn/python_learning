@@ -153,7 +153,7 @@ class SidewaysShooter:
         # Initializing Movement flags; start with a sideways shooter ship that's not moving.
         self.moving_down = False
         self.moving_up = False
-        # Initializing Auto-run flags; these will be used for auto-running left or right.
+        # Initializing Auto-run flags; these will be used for auto-running up or down.
         self.auto_run = False
         self.auto_run_direction = None  # Default direction for auto-run
 
@@ -190,7 +190,7 @@ class Bullet(Sprite):
 
         # Create a bullet rect at (0,0) and then set correct position.
         self.rect = pygame.Rect(0, 0, self.settings.bullet_width, self.settings.bullet_height)
-        self.rect.midleft = gsws_game.sws.rect.midleft
+        self.rect.midright = gsws_game.sws.rect.midleft
 
         # Store the bullet's position as a float.
         self.x = float(self.rect.x)
