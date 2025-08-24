@@ -30,10 +30,6 @@ class AlienInvasion:
             self._check_events()
             self._check_keyspressed()
             self.ship.update()
-
-            # Prints the number of bullets on screen for debugging
-            print(f"Bullets on screen: {len(self.bullets)}", end='\r')
-
             self._update_bullets()
             self._update_screen()
             # Limit the frame rate to 60 FPS
@@ -100,6 +96,9 @@ class AlienInvasion:
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
+        
+        # Prints the number of bullets on screen for debugging
+        print(f"Bullets on screen: {len(self.bullets)}", end='\r')
         
 
     def _update_screen(self):
