@@ -13,7 +13,7 @@ def selection_sort(arr):
         if min_index != i:
             print(f"{counter}:\t{arr}\t-> Swap Elements: {arr[min_index]} and {arr[i]}")
             arr[i], arr[min_index] = arr[min_index], arr[i]
-            counter = counter + 1
+            counter += 1
             swapped = True
     if not swapped:
         print(f"{counter}:\t{arr}\t-> Elements in Position, Sorted!")
